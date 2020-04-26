@@ -1,0 +1,21 @@
+E4 STAR KILL!
+00 ..
+70 This is a little game set up for the MS-DOS Jam!
+00 ..
+90 Code:
+A0 Jeroen P. Broks
+00 ..
+90 Objects and data
+A0 Jeroen P. Broks
+00..
+90 Turbo Pascal Programming language
+A0 Borland International, inc.
+00 ..
+E0 This game has been released under the terms of the 
+E0 General Public License 3.0
+00 ..
+B0 Please look up the source code on:
+B0 https://github.com/PhantasarProductions/StarKill
+00 ..
+F0 (c) Jeroen P. Broks 2020
+
