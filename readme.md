@@ -2,3 +2,6 @@
 
 A nice and simple DOS Text Mode classic shooting game.
 More information will be added later!
+
+
+This is still a WIP! You can already try it, but not all features are yet present and working correctly!
