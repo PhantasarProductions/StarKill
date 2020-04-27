@@ -9,3 +9,9 @@
 MKL*
 
 # Ready to go JCR file
+*.JCR
+
+# No backups either
+*.BAK
+
+
