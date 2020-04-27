@@ -79,6 +79,7 @@ Implementation
 	{$I Klaveren.pas}
 	{$I Bouncer.pas}
 	{$I HeenWeer.pas}
+	{$I Triangle.pas}
 		
 	procedure TopBar;
 	var
@@ -118,6 +119,7 @@ Implementation
 			6:ProcessKlaveren(i);
 			7:ProcessBouncer(i);
 			8:ProcessHeenEnWeer(i);
+			9:ProcessTriangleTorpedo(i);
 		end;
 		if (Killable) and (X=LaserX) and (Y=LaserY) then begin
 			TextColor($14); GotoXY(X,Y); Write('*'); 
@@ -151,7 +153,7 @@ Implementation
 		if (Random(2300)=1) and (Score> 500) then NewBouncer;
 		if (Random(1234)=1) and (Score> 600) then NewHeenEnWeer;
 		if (Random(1000)=1) and (Score> 700) then NewX;
-		
+		if (Random(2000)=1) and (Score> 800) then NewTriangleTorpedo(Score>1000);
 	end;
 	
 	procedure ShipManage;
@@ -194,7 +196,7 @@ Implementation
 	
 	procedure Game_Init;
 	begin
-		Score:=1000;
+		Score:=700;
 		Lives:=3;
 		LaserY:=0;
 		XLife:=1000;
