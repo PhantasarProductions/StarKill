@@ -28,8 +28,6 @@ interface
 	
 implementation
 
-
-
 	function GetTimer:Longint;
 	var 
 		Hr,
