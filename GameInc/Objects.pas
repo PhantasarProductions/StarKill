@@ -31,6 +31,7 @@ type GameObject = Record
 	Killable:Boolean;
 	Color:Byte;
 	DX,DY:ShortInt;
+	Face:Boolean; {Only needed for the bouncing faces}
 	TimeStamp:LongInt;
 	AwardScore:LongInt;
 end;
