@@ -1,0 +1,11 @@
+# Exe files
+*.EXE
+
+# Unit binaries
+*.TPU
+
+# MKL files
+*.MKL.*
+MKL*
+
+# Ready to go JCR file
