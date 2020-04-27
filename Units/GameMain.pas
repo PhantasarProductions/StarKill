@@ -35,6 +35,7 @@ interface
 		Mouse,
 		Timer,
 		XMath,
+		Audio,
 		Stars;
 
 	procedure Game_Init;
@@ -83,7 +84,7 @@ Implementation
 		
 	procedure TopBar;
 	var
-		i:byte;
+		i:Integer;
 	begin
 		ShowStars;
 		GotoXY(1,1);
@@ -102,6 +103,8 @@ Implementation
 		if (Score>=XLife) then begin
 			if (Lives<5) then Lives:=Lives+1;
 			XLife:=XLife+XLife;
+			AudioResetQueue;
+			for i:=100 to 200 do AudioQueue(i*5,2);
 		end;
 	end;
 	
@@ -126,6 +129,8 @@ Implementation
 			LaserY:=0;
 			Active:=false;
 			Score:=Score+AwardScore;
+			AudioResetQueue;
+			for j:=1 to 4 do AudioQueue(Random(2000)+100,1); 
 			if ObjType=1 then Begin
 				repeat
 					FoundX:=false;
@@ -184,6 +189,7 @@ Implementation
 		end else if Mouse_LeftHit Then begin
 			LaserX:=ShipX+1;
 			LaserY:=24;
+			AudioPlay(750,5);
 		end;
 	end;
 
@@ -206,11 +212,14 @@ Implementation
 	procedure Game_Run;
 	begin
 		ClrScr;
+		AudioResetQueue;
+		NoSound;
 		repeat
 			Time:=GetTimer;
 			GetMouse;
 			DrawScreen;
 			ManageObjects;
+			AudioCycle;
 			{$ifdef QuickEND}
 			if (keypressed) and (readkey=#27) then Halt; 
 			{$endif}

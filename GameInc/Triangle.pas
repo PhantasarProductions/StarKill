@@ -57,7 +57,10 @@ begin with Obj[i] do begin
 		end;
 		TimeStamp:=time
 	end;
-	GotoXY(X,Y);
-	TextColor(Color);
-	Write(#31);
+	if Active then begin
+		GotoXY(X,Y);
+		TextColor(Color);
+		Write(#31);
+		AudioPlay(1500-(Y*50),3)
+	end;
 end end;
