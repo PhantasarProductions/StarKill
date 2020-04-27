@@ -1,6 +1,6 @@
 { --- START LICENSE BLOCK ---
 Star Kill
-X
+Schop 'm voor z'n klote!
 
 
 
@@ -21,7 +21,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 Please note that some references to data like pictures or audio, do not automatically
 fall under this licenses. Mostly this is noted in the respective files.
 
-Version: 20.04.26
+Version: 20.04.27
 --- END LICENSE BLOCK --- }
 Procedure NewSchoppen;
 var 
