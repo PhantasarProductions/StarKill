@@ -43,9 +43,9 @@ end;
 Procedure ProcessKlaveren(i:byte);
 begin with Obj[i] do begin
 	if (time mod 555 = 0) and (Time<>TimeStamp) Then begin
+		GotoXY(X,Y); Write(' ');		
 		X:=Random(70)+5;
 		Y:=Random(20)+3;
-		GotoXY(X,Y); Write(' ');		
 		TimeStamp:=time
 	end;
 	GotoXY(X,Y);
