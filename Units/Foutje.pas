@@ -7,7 +7,7 @@ Unit Foutje;
 			Crt;
 	
 		Procedure Crash(Err:string);
-		Procedure Assert(Condition:Boolean,Err:String);
+		Procedure Assert(Condition:Boolean; Err:String);
 		
 	implementation
 	
@@ -18,15 +18,15 @@ Unit Foutje;
 			ClrScr;
 			CursorOn;
 			TextColor($14);
-			WriteLine('Fatal Error!');
+			WriteLn('Fatal Error!');
 			TextColor($07);
-			WriteLine(Err);
+			WriteLn(Err);
 			Halt(20);
 		End;
 		
 		Procedure Assert;
 		Begin
-			If not Condition Then Crash(Err)\
+			If not Condition Then Crash(Err)
 		end;
 		
 	end.
