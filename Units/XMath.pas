@@ -1,6 +1,6 @@
 Unit XMath;
 
-interfact
+interface
 
 	function DegSin(degrees:real):real;
 	
