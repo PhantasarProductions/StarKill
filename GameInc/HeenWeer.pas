@@ -43,7 +43,7 @@ Begin
 		Y:=3; 
 		Lethal:=true;
 		Killable:=true;
-		AwardScore:=18;
+		AwardScore:=20;
 		Color:=Random($F)+1;
 	end
 end;
@@ -55,16 +55,16 @@ begin with Obj[i] do begin
 	if (time mod 3 = 0) and (Time<>TimeStamp) Then begin
 		GotoXY(X,Y); Write(' ');		
 		X:=X+DX;
-		if (X<= 1) then begin X:= 1; Y:=Y+1 end
-		if (X>=80) then begin X:=-1; Y:=Y+1 end
-		if Y>25 then begin Active=false; goto Uit end
+		if (X<= 1) then begin DX:= 1; Y:=Y+1 end;
+		if (X>=80) then begin DX:=-1; Y:=Y+1 end;
+		if Y>25 then begin Active:=false; goto Uit end;
 		TimeStamp:=time
 	end;
 	GotoXY(X,Y);
 	TextColor(Color);
 	if DX=1 then
-		Write(#17)
+		Write(#16)
 	else
-		Write(#18);
+		Write(#17);
 	Uit:
 end end;

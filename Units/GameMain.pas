@@ -117,6 +117,7 @@ Implementation
 			5:ProcessRuiten(i);
 			6:ProcessKlaveren(i);
 			7:ProcessBouncer(i);
+			8:ProcessHeenEnWeer(i);
 		end;
 		if (Killable) and (X=LaserX) and (Y=LaserY) then begin
 			TextColor($14); GotoXY(X,Y); Write('*'); 
@@ -142,12 +143,15 @@ Implementation
 		for i:=0 to ObjMax Do if Obj[i].Active Then ManageObject(i);
 		if (Score>50) And (Random(1000)=1) then NewX;
 		if (Random(2500)=1) then NewBonus;
-		if (Random(1200)=1) and (Score>120) then NewSchoppen;
-		if (Random(1500)=1) and (Score>240) then NewHarten;
-		if (Random(2000)=1) and (Score>350) then NewX;
-		if (Random(1000)=1) and (Score>200) then NewRuiten;
-		if (Random(2100)=1) and (Score>400) then NewKlaveren;
-		if (Random(2300)=1) and (Score>500) then NewBouncer;
+		if (Random(1200)=1) and (Score> 120) then NewSchoppen;
+		if (Random(1500)=1) and (Score> 240) then NewHarten;
+		if (Random(2000)=1) and (Score> 350) then NewX;
+		if (Random(1000)=1) and (Score> 200) then NewRuiten;
+		if (Random(2100)=1) and (Score> 400) then NewKlaveren;
+		if (Random(2300)=1) and (Score> 500) then NewBouncer;
+		if (Random(1234)=1) and (Score> 600) then NewHeenEnWeer;
+		if (Random(1000)=1) and (Score> 700) then NewX;
+		
 	end;
 	
 	procedure ShipManage;
@@ -190,7 +194,7 @@ Implementation
 	
 	procedure Game_Init;
 	begin
-		Score:=0;
+		Score:=1000;
 		Lives:=3;
 		LaserY:=0;
 		XLife:=1000;
