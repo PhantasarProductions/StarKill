@@ -31,6 +31,7 @@ Interface
 		Stars,
 		Drivers,
 		GameMain,
+		Credits,
 		QJCR6,
 		Mouse;
 
@@ -159,6 +160,7 @@ Implementation
 					Game_Init;
 					Game_Run
 				   end;
+				3: Run_Credits;
 			end;
 			TextColor(8);
 			GotoXY(9,25);
