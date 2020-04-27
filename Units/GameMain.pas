@@ -34,6 +34,7 @@ interface
 		Crt,
 		Mouse,
 		Timer,
+		XMath,
 		Stars;
 
 	procedure Game_Init;
@@ -76,6 +77,8 @@ Implementation
 	{$I Harten.pas}
 	{$I Ruiten.pas}
 	{$I Klaveren.pas}
+	{$I Bouncer.pas}
+	{$I HeenWeer.pas}
 		
 	procedure TopBar;
 	var
@@ -113,6 +116,7 @@ Implementation
 			4:ProcessHarten(i);
 			5:ProcessRuiten(i);
 			6:ProcessKlaveren(i);
+			7:ProcessBouncer(i);
 		end;
 		if (Killable) and (X=LaserX) and (Y=LaserY) then begin
 			TextColor($14); GotoXY(X,Y); Write('*'); 
@@ -143,6 +147,7 @@ Implementation
 		if (Random(2000)=1) and (Score>350) then NewX;
 		if (Random(1000)=1) and (Score>200) then NewRuiten;
 		if (Random(2100)=1) and (Score>400) then NewKlaveren;
+		if (Random(2300)=1) and (Score>500) then NewBouncer;
 	end;
 	
 	procedure ShipManage;
