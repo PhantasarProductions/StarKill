@@ -35,7 +35,7 @@ Begin
 		Y:=2;
 		Lethal:=true;
 		Killable:=true;
-		AwardScore:=5;
+		AwardScore:=7;
 		Color:=$4
 	end
 end;
