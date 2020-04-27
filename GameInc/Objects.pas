@@ -30,6 +30,7 @@ type GameObject = Record
 	Lethal:Boolean;
 	Killable:Boolean;
 	Color:Byte;
+	DX,DY:ShortInt;
 	TimeStamp:LongInt;
 	AwardScore:LongInt;
 end;
