@@ -52,7 +52,7 @@ begin with Obj[i] do begin
 		Y:=Y+1;
 		if Y>25 then begin 
 			Y:=1; 
-			Color:=Random($10); 
+			Active:=false;
 			Score:=Score+(abs((ShipX+1)-X)); 
 		end;
 		TimeStamp:=time
