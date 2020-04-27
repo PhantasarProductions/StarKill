@@ -75,6 +75,7 @@ Implementation
 	{$I Schoppen.pas}
 	{$I Harten.pas}
 	{$I Ruiten.pas}
+	{$I Klaveren.pas}
 		
 	procedure TopBar;
 	var
@@ -111,6 +112,7 @@ Implementation
 			3:ProcessSchoppen(i);
 			4:ProcessHarten(i);
 			5:ProcessRuiten(i);
+			6:ProcessKlaveren(i);
 		end;
 		if (Killable) and (X=LaserX) and (Y=LaserY) then begin
 			TextColor($14); GotoXY(X,Y); Write('*'); 
@@ -140,6 +142,7 @@ Implementation
 		if (Random(1500)=1) and (Score>240) then NewHarten;
 		if (Random(2000)=1) and (Score>350) then NewX;
 		if (Random(1000)=1) and (Score>200) then NewRuiten;
+		if (Random(2100)=1) and (Score>400) then NewKlaveren;
 	end;
 	
 	procedure ShipManage;
