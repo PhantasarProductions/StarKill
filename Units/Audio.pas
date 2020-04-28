@@ -2,7 +2,7 @@
 Units/Audio.pas
 Audio
 version: 20.04.28
-Copyright (C)  Jeroen P. Broks
+Copyright (C) 2020 Jeroen P. Broks
 This software is provided 'as-is', without any express or implied
 warranty.  In no event will the authors be held liable for any damages
 arising from the use of this software.
@@ -17,6 +17,7 @@ appreciated but is not required.
 misrepresented as being the original software.
 3. This notice may not be removed or altered from any source distribution.
 --- END LICENSE BLOCK --- }
+
 Unit Audio;
 
 Interface

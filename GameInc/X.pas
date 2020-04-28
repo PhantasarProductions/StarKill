@@ -4,7 +4,7 @@ X
 
 
 
-(c) Jeroen P. Broks, 
+(c) Jeroen P. Broks, 2020
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -21,7 +21,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 Please note that some references to data like pictures or audio, do not automatically
 fall under this licenses. Mostly this is noted in the respective files.
 
-Version: 20.04.27
+Version: 20.04.28
 --- END LICENSE BLOCK --- }
 Procedure NewX;
 var 
@@ -52,7 +52,7 @@ begin with Obj[i] do begin
 			2: if X<77 then X:=X+1;
 		end;
 		Y:=Y+1;
-		if Y>25 then begin Y:=1; Color:=Random($10) end;
+		if Y>25 then begin Y:=1; X:=Random(75)+2; Color:=Random($10) end;
 		TimeStamp:=time
 	end;
 	GotoXY(X,Y);
