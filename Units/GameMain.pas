@@ -55,6 +55,7 @@ Implementation
 		Obj:Array[0..ObjMax] of GameObject;
 		LaserX,Lasery:Byte;
 		Time:Longint;
+		GameOver,Quit:Boolean;
 		
 	function FreeObject(var ret:byte):Boolean;
 	var
@@ -206,6 +207,8 @@ Implementation
 		Lives:=3;
 		LaserY:=0;
 		XLife:=1000;
+		GameOver:=false;
+		Quit:=false;
 		NewX;
 	end;
 	
@@ -223,7 +226,7 @@ Implementation
 			{$ifdef QuickEND}
 			if (keypressed) and (readkey=#27) then Halt; 
 			{$endif}
-		until false;
+		until GameOver Or Quit;
 	end;
 	
 end.
