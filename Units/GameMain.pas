@@ -26,7 +26,7 @@ Version: 20.04.28
 
 Unit GameMain;
 
-{$Define QuickEND}
+{$Undef QuickEND}
 
 interface
 
@@ -267,9 +267,31 @@ Implementation
 				CD:=CD-1
 			end
 		until CD=0;
-		clrscr;
+		clrscr
 	end;
 	
+	procedure PauseGame;
+	var
+		Resume:Boolean;
+	begin
+		NoSound;
+		clrscr;
+		repeat
+			TopBar;
+			ShowStars;
+			TextColor(10);
+			GotoXY(35,10); 
+			Write('Game Paused!');
+			TextColor(12);
+			GotoXY(24,12);
+			Write('Hit mouse to resume or Q to Quit');
+			DrawMouse;
+			GetMouse;
+			Quit:=(KeyPressed) And (upcase(ReadKey)='Q');
+			Resume:=Mouse_LeftHit or Mouse_RightHit
+		until Resume or Quit;
+		ClrScr
+	end;
 
 	procedure DrawScreen;
 	begin
@@ -300,8 +322,11 @@ Implementation
 			DrawScreen;
 			ManageObjects;
 			AudioCycle;
+			if (keypressed) and (readkey=#27) then 
 			{$ifdef QuickEND}
-			if (keypressed) and (readkey=#27) then Halt; 
+				begin CursorOn; Halt end;
+			{$else}
+				PauseGame;
 			{$endif}
 		until GameOver Or Quit;
 		if GameOver then GameOverScreen;
