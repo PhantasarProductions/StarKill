@@ -42,7 +42,7 @@ Implementation
 		end;
 		
 	Const
-		QueueMax = 25;
+		QueueMax = 35;
 		
 	var 
 		CurPlaying:Word;

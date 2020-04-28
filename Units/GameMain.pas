@@ -105,8 +105,41 @@ Implementation
 			if (Lives<5) then Lives:=Lives+1;
 			XLife:=XLife+XLife;
 			AudioResetQueue;
-			for i:=100 to 200 do AudioQueue(i*5,2);
+			for i:=100 to 200 do AudioQueue(i*5,2);			
 		end;
+	end;
+	
+	procedure Death;
+	var 
+		x,y:byte;
+		i,j,k,c:byte;
+	begin
+		x:=ShipX;
+		AudioResetQueue;
+		for i:=100 downto 5 do AudioQueue(i*10,2);
+		for j:=1 to 20 do begin
+			for i:=x-1 to x+3 do begin
+				y:=random(5)+15;
+				for k:=15 to k do Begin
+					GotoXY(i,y); 
+					Write(' ')
+				end;
+				for k:=y to 25 do begin
+					GotoXY(i,k);
+					c:=random(5);
+					case c of
+						0: TextColor(1);
+						1..2:TextColor(4);
+						3:TextColor(12)
+						else TextColor(14)
+					end;
+					Write(#178)
+				end
+			end
+		end;
+		ClrScr;
+		for i:=0 to ObjMax do
+			Obj[i].Active:=false
 	end;
 	
 	procedure ManageObject(i:byte); 
@@ -139,6 +172,15 @@ Implementation
 						FoundX:=(FoundX) or ((Obj[j].Active) and (Obj[j].ObjType=1));
 					if not FoundX then begin Active:=true; Y:=1; X:=Random(70)+5 end
 				until FoundX
+			end
+		end;
+		if (Lethal) and (Y=25) and (X>=ShipX) and (X<=ShipX+3) then begin
+			Death;
+			if Lives=0 then
+				GameOver:=true
+			else begin
+				NewX;
+				Lives:=Lives-1
 			end
 		end
 	end end;
@@ -193,6 +235,41 @@ Implementation
 			AudioPlay(750,5);
 		end;
 	end;
+	
+	procedure GameOverScreen;
+	var 
+		CD:Word;
+		OT:Longint;
+	begin
+		AudioResetQueue;
+		AudioQueue(261, 99); AudioQueue(0,1); { C  kwart }
+		AudioQueue(261, 74); AudioQueue(0,1); { C  achtste + half }
+		AudioQueue(261, 24); AudioQueue(0,1); { C  zestiende }
+		AudioQueue(261, 99); AudioQueue(0,1); { C  kwart }
+		AudioQueue(311, 74); AudioQueue(0,1); { D# achtste + half }
+		AudioQueue(293, 24); AudioQueue(0,1); { D  zestiende }
+		AudioQueue(293, 74); AudioQueue(0,1); { D  achtste + half }
+		AudioQueue(261, 24); AudioQueue(0,1); { C  zestiende }
+		AudioQueue(261, 74); AudioQueue(0,1); { C  achtste + half }
+		AudioQueue(246, 24); AudioQueue(0,1); { B  Zestiende }
+		AudioQueue(261,200); { C  half }
+		CD := 400;
+		OT := 0;
+		repeat
+			ShowStars;
+			TopBar;
+			GotoXY(36,10);
+			TextColor(9);
+			Write('Game Over');
+			AudioCycle;
+			if OT<>GetTimer then begin
+				OT:=GetTimer;
+				CD:=CD-1
+			end
+		until CD=0;
+		clrscr;
+	end;
+	
 
 	procedure DrawScreen;
 	begin
@@ -203,7 +280,7 @@ Implementation
 	
 	procedure Game_Init;
 	begin
-		Score:=700;
+		Score:=0;
 		Lives:=3;
 		LaserY:=0;
 		XLife:=1000;
@@ -227,6 +304,7 @@ Implementation
 			if (keypressed) and (readkey=#27) then Halt; 
 			{$endif}
 		until GameOver Or Quit;
+		if GameOver then GameOverScreen;
 	end;
 	
 end.
