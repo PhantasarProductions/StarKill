@@ -49,5 +49,5 @@ begin with Obj[i] do begin
 	end;
 	GotoXY(X,Y);
 	TextColor(Color);
-	Write(#6);
+	if Active then Write(#6)
 end end;
