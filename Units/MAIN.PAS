@@ -4,7 +4,7 @@ Main Menu and Chain Manager
 
 
 
-(c) Jeroen P. Broks, 
+(c) Jeroen P. Broks, 2020
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -21,7 +21,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 Please note that some references to data like pictures or audio, do not automatically
 fall under this licenses. Mostly this is noted in the respective files.
 
-Version: 20.04.27
+Version: 20.04.29
 --- END LICENSE BLOCK --- }
 Unit Main;
 
@@ -34,6 +34,7 @@ Interface
 		Credits,
 		QJCR6,
 		Audio,
+		HOF,
 		Mouse;
 
     Procedure RunMain;
@@ -52,7 +53,7 @@ Implementation
 		LogoArray = Array[1..40] of Boolean;
 	
 	var 
-		MenuItem:Array[1..5] Of TMenuItem;
+		MenuItem:Array[1..6] Of TMenuItem;
 		Logo:array[1..5] of LogoArray;
 		
 	{
@@ -142,7 +143,7 @@ Implementation
 			end;
             ShowStars;
             ShowLogo;
-            for i:=1 to 5 do begin
+            for i:=1 to 6 do begin
 				gotoxy(MenuItem[i].x,MenuItem[i].y);
 				TextColor(7); TextBackGround(0);
 				if not MenuItem[i].enabled then
@@ -160,12 +161,13 @@ Implementation
 					Game_Init;
 					Game_Run
 				   end;
-				3: Begin
+				3: ViewHOF;
+				4: Begin
 					UseAudio:=Not UseAudio;
-					MenuItem[3].Item:='Audio: '+AudioOn;
+					MenuItem[4].Item:='Audio: '+AudioOn;
 					if UseAudio then AudioPlay(300,20)
 				   end;
-				4: Run_Credits;
+				5: Run_Credits;
 			end;
 			TextColor(8);
 			GotoXY(9,25);
@@ -184,7 +186,8 @@ Begin
 	MakeLogo;
 	NewMenuItem(1,'New Game',1);
 	NewMenuItem(2,'Continue',2); MenuItem[2].Enabled := False;
-	NewMenuItem(3,'Audio: ON',3);
-	NewMenuItem(4,'Credits',4);	
-	NewMenuItem(5,'Quit',255); MenuItem[5].y := MenuItem[5].y + 2
+	NewMenuItem(3,'Hall of Fame',3);
+	NewMenuItem(4,'Audio: ON',4);
+	NewMenuItem(5,'Credits',5);	
+	NewMenuItem(6,'Quit',255); MenuItem[6].y := MenuItem[5].y + 2
 End.

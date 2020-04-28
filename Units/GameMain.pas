@@ -21,7 +21,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 Please note that some references to data like pictures or audio, do not automatically
 fall under this licenses. Mostly this is noted in the respective files.
 
-Version: 20.04.28
+Version: 20.04.29
 --- END LICENSE BLOCK --- }
 
 Unit GameMain;
@@ -36,6 +36,7 @@ interface
 		Timer,
 		XMath,
 		Audio,
+		HOF,
 		Stars;
 
 	procedure Game_Init;
@@ -267,7 +268,9 @@ Implementation
 				CD:=CD-1
 			end
 		until CD=0;
-		clrscr
+		clrscr;
+		SubmitScore(Score);
+		ViewHOF;
 	end;
 	
 	procedure PauseGame;
