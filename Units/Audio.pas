@@ -1,7 +1,7 @@
 { --- START LICENSE BLOCK ---
 Units/Audio.pas
 Audio
-version: 20.04.27
+version: 20.04.28
 Copyright (C)  Jeroen P. Broks
 This software is provided 'as-is', without any express or implied
 warranty.  In no event will the authors be held liable for any damages
